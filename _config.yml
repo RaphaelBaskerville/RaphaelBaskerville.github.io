@@ -1,13 +1,12 @@
 # Site settings
-title: "Joon: Roon for Jekyll"
-logo: logo.png # image from https://www.flickr.com/photos/lwr/5496279831/in/set-72157594159055823
+title: "coder : 1213"
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  Roon was an excellent service, with a beautiful understated design. Roon
-  was eventually acquired by Ghost, who awesomely chose to open source the theme.
-  <br/>This is my Jekyll port of the Roon theme
-url: "http://vormwald.github.io" # the base hostname & protocol for your site
-baseurl: "/joon" # the subpath of your site, e.g. /blog/
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://raphaelbaskerville.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 

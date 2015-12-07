@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "Reduce's Uses: Introduction to Reduction"
+date:   2015-11-19 2:50:32 -0800
+categories: coding
+---
+>###*"Loves reduce so much he wrote a blog about it."*
+
+    The nice thing about reduce is that when no other list-transformer pops out at you as a good choice, you can pretty much always fall back on it.  It's not the fastest, most efficient answer to most problems, but it'll get the job done.
+
+###What's reduce?
+>What isn't reduce?
+
+####Reduce is an array method native to JavaScript.  It is also available for use on any object from the great underscorejs library. 
+
+    It takes a list, a callback function and a starting "total" as arguments, and iterates through each item in the list.  The callback will take the accumulated value (or starting point on the first iteration) and the current value of the list, smashes/dices/seperates/concatinates/desolves/loveconnections them together in some-way and returns this new value.  Then, reduce will take this new value and pass it back into the callback with the next value of the list. This process repeats until every item in the list has been passed into the callback function, resulting in a single value.
+
+{% highlight js %}
+// Reduce is a function that takes a list, an accumulator callback and an 
+// optional starting point called accumulation.
+_.reduce = function (list , callback, accumulation) {
+// Iterate through the list. 
+  _.each(list , function(val,key,list) {
+// If no accumulation has been provided
+    if (accumulation === undefined) {
+// use the first value of the list. 
+      accumulation = val;
+// otherwise 
+    } else {
+// redefine accumulation as the result of passing the 
+// accumulation, current value, its key and the entire list 
+// into the accumulator callback.
+      accumulation = callback(accumulation, val, key ,list);
+    }
+  });
+// after iterating through the list, return the accumulation.
+  return accumulation;
+};
+
+{% endhighlight %}
+
+
+###Uses for reduce
+
+####Reduce takes many things and turns them into one thing.
+
+   Things you can do with reduce:  
+
+* Finding the sum or product of a collection of numbers
+* Making one string from many
+* Building up properties in an object
+* Flattening an array
+* Determining if all or none of the items in a list pass or fail a condition
+* Finding the min or max of a collection of numbers
+
+###Use reduce for everything.
+
+> (Do you like reduce) ? (Don't use it) : (Use it);
+
+Learning higher-order functions is scary.  You are passing functions into other functions, thinking about abstraction, recursion, functional programming and it's all happening at the same time.  
+
+Each Map and Filter all pass the current value, its key, and the entire list into the callback function on every itieration.  It's easy to forget that reduce passes the accumulation into the callback function before the value key and list.  If you make this mistake your code wont work as expected and its tricky to debug.  Especially since you can erase reduce and replace it with an each, map or filter, your callback works as expected, because you forgot the acc in the first place.
+
+For beginers it's important to force yourself to use reduce until it makes sense.
+
+###Don't use reduce for everything
+> you could build a house with nothing but a swiss army knife, but that doesn't make it a good idea.
+
+    Since reduce is such a flexible tool, it's important to remember that you have other tools as well.  Example: You could use reduce to find all users with a certain email address.  Reduce can do that.  Emails are unique, so there will be only one user with that email. Initially, it sounds like that's exactly what reduce is for, right?  Taking a list and returning a single value. But, you can use _.first for that.  It's built for that, and will perform much better than reduce will.  _.first will return as soon as it finds the email you were looking for.  While _.reduce would continue checking every single email address every single time. What if you were dealing with millions of users?  
+
+    Reduce is kind of like a swiss-army-knife because it can do everything. Sometimes though, all you need is a screwdriver and even though swiss-army-knives **do** have screwdrivers, they suck, so you use a real screwdriver.  The *difference* between reduce and swiss-army-knives is that sometimes reduce **is absolutley the best tool** for the job, where a swiss army knife probably never is.  Reduce is more like a swiss-army-sledgehammer, you could hammer a nail with it, you could probably hammer a screw with it, but it's made for breaking concrete.  You should always try to find a method that solves your problem directly.
+
+###When to use reduce
+>If an array is not the data-type you need, you shouldn't use a method that returns an array.  Use a sledgehammer.
+
+    Typically, when im dealing with a collection and I need to transform it, I ask, what is the result that I'm looking for?  What do I want to have returned?  If the answer **isn't** an array, I immediatley start considering reduce.  E.g. I have a list and I want an object literal, boolean, number or string.  To be clear, reduce **can** return an array and there are cases that you would use it for that, like reducing/flattening nested arrays into a single flat array.  But if I want something other than an array returned, it's **even more likely** that reduce will be useful.  
+
+    Many list transformation methods return an array, and are clearly not ideal if one is looking for a different data type.  We've all used map or filter to get a results array of one thing(s) and then referenced the value inside of it with results[0].
+
+
+###Adding more to reduce later
+I'll continue to add to this, as reduce has many uses, some of which I don't even know yet.  I'm sure this post has plenty of mistakes, bad advice, holes, gaps and malicious assumptions on my part.  Please don't take anything for granted and go easy on me.  I'm learnd-ing.
+
+Thanks for reading!  Let me know what you think.  Thanks.
+
+[underscore]: http://underscorejs.org/
+[other-reduces]: http://localhost:4000/coding/2015/11/19/reduce.html
+[rb.com]:http://www.raphaelbaskerville.com/
+
+
+

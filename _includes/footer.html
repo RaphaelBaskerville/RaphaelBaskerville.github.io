@@ -1,29 +1,49 @@
-<footer role="contentinfo" class='post-footer'>
-    <div class="inner">
-        <div class="vcard">
-          <a href="{{ site.baseurl }}/feed.xml" id="btn_feed" class="btn" title="Feed" target="_blank">
-                <span aria-hidden="true" data-icon=")"></span>
-                <strong>Feed</strong>
-            </a>
+<!-- Footer -->
+<footer id="footer">
+    <!-- <img src="{{ site.baseurl }}/images/pic02.jpg" class="fit image"> -->
+        <div class="container">
+        <div class="row double">
+            <div class="6u">
+                <div class="row collapse-at-2">
+                    <div class="6u">
+                        <h3>Links</h3>
+                        <ul class="alt">
+                            <li><a href="https://github.com/RaphaelBaskerville">GitHub</a></li>
+                            <li><a href="https://twitter.com/_12_13_">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/thabaskerville/">Instagram</a></li>
+                        </ul>
+                    </div>
+<!--                     <div class="6u">
+                        <h3>Faucibus</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            <div class="6u">
+    <img src="https://pbs.twimg.com/profile_images/673727734095282176/zy2TffkG.jpg" class='fit image mid'>
+                <h2>coder : 1213</h2>
+                <p>I like to blog about computer-programing, skateboarding and dog-loving!  <br>I code JavaScript, I skate street, and I pamper chihuahua.</p>
+                <ul class="icons">
 
-            {% if site.logo %}
-            <a href="{{ site.baseurl }}" class="photo circle">
-              <span style="background-image: url('{{ site.baseurl }}/assets/images/{{ site.logo }}');">
-                <img src="{{ site.baseurl }}/assets/images/{{ site.logo }}" alt="{{ site.title }}"/>
-              </span>
-            </a>
-            {% endif %}
-
-            <div class="details">
-                <h4><a href="{{ site.url }}" class="url n">{{ site.title }}</a></h4>
-                <a href="{{ site.baseurl | prepend: site.url }}" class="js-remove-domain-schema">{{ site.url }}{{ site.baseurl }}</a><br>
-                <span>Published with <a href="https://jekyllrb.org">Jekyll</a></span>
+                    <li><a href="https://twitter.com/_12_13_" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/RaphaelBaskerville" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.instagram.com/thabaskerville/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li> -->
+                </ul>
             </div>
         </div>
-        <div id="user_bio">
-            <div class="inner">
-                {{ site.description }}
-            </div>
-        </div>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <!-- <li>Design: <a href="http://templated.co">TEMPLATED</a></li> -->
+            <!-- <li>Images: <a href="http://unsplash.com">Unsplash</a></li> -->
+            <!-- <li>Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li> -->
+        </ul>
     </div>
 </footer>

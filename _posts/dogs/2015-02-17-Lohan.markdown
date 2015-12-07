@@ -1,0 +1,14 @@
+---
+layout: post
+categories: dogs
+---
+<img src="{{ site.baseurl }}/images/loloTongue.jpg" class="fit image lohan">
+
+We have this fun game going.  I make a face and this little guy tries to copy me.
+
+<img src="{{ site.baseurl }}/images/loloGrouch.jpg" class="fit image dog">
+<img src="{{ site.baseurl }}/images/loloLaugh.jpg" class="fit image dog">
+<img src="{{ site.baseurl }}/images/loloRoar.jpg" class="fit image dog">
+<img src="{{ site.baseurl }}/images/loloSomber.jpg" class="fit image dog">
+<img src="{{ site.baseurl }}/images/loloSquint.jpg" class="fit image dog">
+<img src="{{ site.baseurl }}/images/loloStoic.jpg" class="fit image dog">

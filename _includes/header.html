@@ -1,19 +1,21 @@
-<header role="banner">
-<div class="wrap">
-  <h1>
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-  </h1>
-  <hr>
-  <!--
-    <nav class="site-nav">
-    <div class="trigger">
-    {% for page in site.pages %}
-    {% if page.title %}
-    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-    {% endif %}
-    {% endfor %}
-    </div>
+<!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><a href="{{ site.baseurl }}/" class="site-title" >{{ site.title }}</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="{{ site.baseurl }}/">Home</a></li>
+<!--             <li><a href="{{ site.baseurl }}/left-sidebar.html">Left Sidebar</a></li>
+            <li><a href="{{ site.baseurl }}/right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="{{ site.baseurl }}/no-sidebar.html">No Sidebar</a></li> -->        
+            <li><a href="{{ site.baseurl }}/codeBlog.html">Coding</a></li>
+            <li><a href="{{ site.baseurl }}/skateBlog.html">Skateboarding</a></li>
+            <li><a href="{{ site.baseurl }}/dogBlog.html">Dogs</a></li>
+            {% for page in site.pages %}
+                  {% if page.title %}
+                    <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+                  {% endif %}
+            {% endfor %}
+            <!-- <li><a href="#" class="button special">Sign Up</a></li> -->
+        </ul>
     </nav>
-  -->
-</div>
 </header>

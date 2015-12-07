@@ -1,262 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Joon: Roon for Jekyll</title>
-    <description>Roon was an excellent service, with a beautiful understated design. Roon was eventually acquired by Ghost, who awesomely chose to open source the theme. &lt;br/&gt;This is my Jekyll port of the Roon theme
+    <title>coder : 1213</title>
+    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://vormwald.github.io/joon/</link>
-    <atom:link href="http://vormwald.github.io/joon/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Dec 2015 15:07:33 -0800</pubDate>
-    <lastBuildDate>Sat, 05 Dec 2015 15:07:33 -0800</lastBuildDate>
+    <link>http://raphaelbaskerville.com/</link>
+    <atom:link href="http://raphaelbaskerville.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 06 Dec 2015 22:50:00 -0800</pubDate>
+    <lastBuildDate>Sun, 06 Dec 2015 22:50:00 -0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Style Test</title>
-        <description>&lt;p&gt;Note: This style test is taken verbatum from the official Roon style test on
-Ghost.org &lt;a href=&quot;&quot;&gt;http://roon.ghost.io/style-test/&lt;/a&gt;. The Ghost team is awesome, and
-you should definitely check out their service.&lt;/p&gt;
+        <title>Reduce: Extend</title>
+        <description>&lt;h2 id=&quot;extend-and-defaults&quot;&gt;Extend and Defaults&lt;/h2&gt;
 
-&lt;p&gt;Heavily copied content begins below…&lt;/p&gt;
+&lt;p&gt;  _.extend takes in an object and an arbitrary number of additional optional objects.  It takes the key/value pairs from the optional objects and adds them to the “master” object, over-writing properties that already exist.  _.defaults does the same thing except doesn’t over-write properties.&lt;/p&gt;
 
-&lt;hr /&gt;
+&lt;h2 id=&quot;solved-with-reduce&quot;&gt;Solved with reduce&lt;/h2&gt;
 
-&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;propsToAddObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propsToAddObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
+  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defaults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;propsToAddObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propsToAddObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+          &lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;acc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
+&lt;h2 id=&quot;step-by-step-pseudo-psuedocode&quot;&gt;Step by step pseudo-psuedocode&lt;/h2&gt;
 
-&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
+&lt;p&gt;   Our arguments are an array with our original object and &lt;em&gt;objects-with-properties-we’d-like-to-add&lt;/em&gt;&lt;/p&gt;
 
-&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
+&lt;p&gt;    While iterating _.reduce will pass one of the &lt;em&gt;objects-with-properties-we’d-like-to-add&lt;/em&gt; into _.each.  Since we don’t pass a starting point in, acc will be the original object on the first iteration.&lt;/p&gt;
 
-&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;return _.reduce(arguments, function (acc, objectWithPropsWedLikeToAdd) {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;    Iterate through the &lt;em&gt;object-with-properties-we’d-like-to-add&lt;/em&gt;, on each iteration _.each will pass a &lt;em&gt;property-we’d-like-to-add&lt;/em&gt; (a value and it’s key) to the callback.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, &lt;a href=&quot;&quot;&gt;test link&lt;/a&gt; adipiscing elit. &lt;strong&gt;This is strong.&lt;/strong&gt; Nullam dignissim convallis est. Quisque aliquam. &lt;em&gt;This is emphasized.&lt;/em&gt; Donec faucibus. Nunc iaculis suscipit dui. 5&lt;sup&gt;3&lt;/sup&gt; = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. &lt;cite&gt;The New York Times&lt;/cite&gt; (That’s a citation). &lt;span style=&quot;text-decoration:underline;&quot;&gt;Underline&lt;/span&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  _.each(objectWithPropsWedLikeToAdd, function (value, key) {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;abbr title=&quot;Hyper Text Markup Language&quot;&gt;HTML&lt;/abbr&gt; and &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt; are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. To copy a file type &lt;code class=&quot;highlighter-rouge&quot;&gt;COPY filename&lt;/code&gt;. &lt;del&gt;Dinner’s at 5:00.&lt;/del&gt; &lt;span style=&quot;text-decoration:underline;&quot;&gt;Let’s make that 7&lt;/span&gt;. This &lt;del&gt;text&lt;/del&gt; has been struck.&lt;/p&gt;
+&lt;p&gt;    The callback will either create or overwrite the property on the acc with the key and value of the current &lt;em&gt;property-we’d-like-to-add&lt;/em&gt;.&lt;/p&gt;
 
-&lt;hr /&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    acc[key] = value;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h2 id=&quot;media&quot;&gt;Media&lt;/h2&gt;
+&lt;p&gt;    Return the acc object with brand new keys/props. On reduce’s next iteration it will pass the next &lt;em&gt;object-with-properties-we’d-like-to-add&lt;/em&gt; to each, but it will use the new bigger better object to add the key/value pairs to.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  return acc;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;h3 id=&quot;big-image&quot;&gt;Big Image&lt;/h3&gt;
+&lt;p&gt;    After we have iterated through all of the &lt;em&gt;objects-with-properties-we’d-like-to-add&lt;/em&gt; reduce returns the accumulation of key/value pairs, which is returned by extend.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/joon/content/images/joon-big.jpg&quot; alt=&quot;Test Image&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;defaults&quot;&gt;Defaults&lt;/h3&gt;
 
-&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/p&gt;
+&lt;p&gt;    The only difference between defaults and extend is that defaults does a check to ensure that a key doesn’t exist before it creates it, which requires passing a slightly modified callback to each.&lt;/p&gt;
 
-&lt;h3 id=&quot;small-image&quot;&gt;Small Image&lt;/h3&gt;
+&lt;p&gt;_.extend&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  _.each(propsToAddObj, function (value, key) {
+    acc[key] = value;       // just add key/val
+  })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/joon/content/images/joon-small.jpg&quot; alt=&quot;Small Test Image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;_.defaults&lt;/p&gt;
 
-&lt;p&gt;Labore et dolore.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;/h2&gt;
-
-&lt;h3 id=&quot;definition-list&quot;&gt;Definition List&lt;/h3&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;Definition List Title&lt;/dt&gt;
-  &lt;dd&gt;This is a definition list division.&lt;/dd&gt;
-  &lt;dt&gt;Definition&lt;/dt&gt;
-  &lt;dd&gt;An exact statement or description of the nature, scope, or meaning of something: &lt;em&gt;our definition of what constitutes poetry.&lt;/em&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3 id=&quot;ordered-list&quot;&gt;Ordered List&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;List Item 1&lt;/li&gt;
-  &lt;li&gt;List Item 2
-    &lt;ol&gt;
-      &lt;li&gt;Nested list item A&lt;/li&gt;
-      &lt;li&gt;Nested list item B&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;List Item 3&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;unordered-list&quot;&gt;Unordered List&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;List Item 1&lt;/li&gt;
-  &lt;li&gt;List Item 2
-    &lt;ul&gt;
-      &lt;li&gt;Nested list item A&lt;/li&gt;
-      &lt;li&gt;Nested list item B&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;List Item 3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;table&quot;&gt;Table&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Table Header 1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Table Header 2&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Table Header 3&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Division 3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;preformatted-text&quot;&gt;Preformatted Text&lt;/h2&gt;
-
-&lt;p&gt;Typographically, preformatted text is not the same thing as code. Sometimes, a faithful execution of the text requires preformatted text that may not have anything to do with code. Most browsers use Courier and that’s a good default — with one slight adjustment, Courier 10 Pitch over regular Courier for Linux users.&lt;/p&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Code can be presented inline, like &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;?php bloginfo(&#39;stylesheet_url&#39;); ?&amp;gt;&lt;/code&gt;, or using &lt;a href=&quot;http://jekyllrb.com/docs/templates/#code-snippet-highlighting&quot;&gt;jekyll’s highlight
-filter&lt;/a&gt; to
-highlight a block of code. Because we have more specific typographic needs for code, we’ll specify Consolas and Monaco ahead of the browser-defined monospace font.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h2&gt;
-
-&lt;p&gt;Let’s keep it simple. Italics are good to help set it off from the body text. Be sure to style the citation.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Good afternoon, gentlemen. I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. My instructor was Mr. Langley, and he taught me to sing a song. If you’d like to hear it I can sing it for you. — &lt;a href=&quot;http://en.wikipedia.org/wiki/HAL_9000&quot;&gt;HAL 9000&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;And here’s a bit of trailing text.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;text-level-semantics&quot;&gt;Text-level semantics&lt;/h2&gt;
-
-&lt;p&gt;&lt;abbr title=&quot;Hyper Text Markup Language&quot;&gt;HTML&lt;/abbr&gt; elements&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&quot;#&quot;&gt;a element&lt;/a&gt; example &lt;br /&gt;
-The &lt;abbr&gt;abbr element&lt;/abbr&gt; and &lt;abbr title=&quot;Title text&quot;&gt;abbr element with title&lt;/abbr&gt; examples &lt;br /&gt;
-The &lt;b&gt;b element&lt;/b&gt; example &lt;br /&gt;
-The &lt;cite&gt;cite element&lt;/cite&gt; example &lt;br /&gt;
-The &lt;code&gt;code element&lt;/code&gt; example &lt;br /&gt;
-The &lt;del&gt;del element&lt;/del&gt; example &lt;br /&gt;
-The &lt;dfn&gt;dfn element&lt;/dfn&gt; and &lt;dfn title=&quot;Title text&quot;&gt;dfn element with title&lt;/dfn&gt; examples &lt;br /&gt;
-The &lt;em&gt;em element&lt;/em&gt; example &lt;br /&gt;
-The &lt;i&gt;i element&lt;/i&gt; example &lt;br /&gt;
-The &lt;ins&gt;ins element&lt;/ins&gt; example &lt;br /&gt;
-The &lt;kbd&gt;kbd element&lt;/kbd&gt; example &lt;br /&gt;
-The &lt;mark&gt;mark element&lt;/mark&gt; example &lt;br /&gt;
-The &lt;q&gt;q element &lt;q&gt;inside&lt;/q&gt; a q element&lt;/q&gt; example &lt;br /&gt;
-The &lt;s&gt;s element&lt;/s&gt; example &lt;br /&gt;
-The &lt;samp&gt;samp element&lt;/samp&gt; example &lt;br /&gt;
-The &lt;small&gt;small element&lt;/small&gt; example &lt;br /&gt;
-The &lt;span&gt;span element&lt;/span&gt; example &lt;br /&gt;
-The &lt;strong&gt;strong element&lt;/strong&gt; example &lt;br /&gt;
-The &lt;sub&gt;sub element&lt;/sub&gt; example &lt;br /&gt;
-The &lt;sup&gt;sup element&lt;/sup&gt; example &lt;br /&gt;
-The &lt;var&gt;var element&lt;/var&gt; example &lt;br /&gt;
-The &lt;u&gt;u element&lt;/u&gt; example&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;embeds&quot;&gt;Embeds&lt;/h2&gt;
-
-&lt;p&gt;Sometimes all you want to do is embed a little love from another location and set your post alive.&lt;/p&gt;
-
-&lt;h3 id=&quot;video&quot;&gt;Video&lt;/h3&gt;
-
-&lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
-
-&lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;iframe src=&quot;//player.vimeo.com/video/103224792&quot; width=&quot;600&quot; height=&quot;337&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h3 id=&quot;slides&quot;&gt;Slides&lt;/h3&gt;
-
-&lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
-
-&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;585245d01ee1013238737e42b879906f&quot; data-ratio=&quot;1.77777777777778&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;h3 id=&quot;audio&quot;&gt;Audio&lt;/h3&gt;
-
-&lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
-
-&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/52891122&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;show_comments=true&amp;amp;show_user=true&amp;amp;show_reposts=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;Culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;h3 id=&quot;code-1&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.&lt;/p&gt;
-
-&lt;p data-height=&quot;268&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;bcqhe&quot; data-default-tab=&quot;result&quot; data-user=&quot;rglazebrook&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/rglazebrook/pen/bcqhe/&quot;&gt;Simple Rotating Spinner&lt;/a&gt; by Rob Glazebrook (&lt;a href=&quot;http://codepen.io/rglazebrook&quot;&gt;@rglazebrook&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
-&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;Isn’t it beautiful.&lt;/p&gt;
-
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_.each(propsToAddObj, function (value, key) {
+    if (!acc[key]) {        // check that key does NOT exist
+      acc[key] = value;     // add key/val
+    }
+  })
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
-        <pubDate>Wed, 10 Dec 2014 00:00:00 -0800</pubDate>
-        <link>http://vormwald.github.io/joon/2014/12/10/style-test.html</link>
-        <guid isPermaLink="true">http://vormwald.github.io/joon/2014/12/10/style-test.html</guid>
+        <pubDate>Sat, 21 Nov 2015 12:50:32 -0800</pubDate>
+        <link>http://raphaelbaskerville.com/coding/2015/11/21/extend.html</link>
+        <guid isPermaLink="true">http://raphaelbaskerville.com/coding/2015/11/21/extend.html</guid>
         
+        
+        <category>coding</category>
         
       </item>
     
       <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>Reduce&#39;s Uses: Introduction to Reduction</title>
+        <description>&lt;blockquote&gt;
+  &lt;h3 id=&quot;loves-reduce-so-much-he-wrote-a-blog-about-it&quot;&gt;&lt;em&gt;“Loves reduce so much he wrote a blog about it.”&lt;/em&gt;&lt;/h3&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;    The nice thing about reduce is that when no other list-transformer pops out at you as a good choice, you can pretty much always fall back on it.  It’s not the fastest, most efficient answer to most problems, but it’ll get the job done.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;h3 id=&quot;whats-reduce&quot;&gt;What’s reduce?&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;What isn’t reduce?&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;reduce-is-an-array-method-native-to-javascript--it-is-also-available-for-use-on-any-object-from-the-great-underscorejs-library&quot;&gt;Reduce is an array method native to JavaScript.  It is also available for use on any object from the great underscorejs library.&lt;/h4&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;    It takes a list, a callback function and a starting “total” as arguments, and iterates through each item in the list.  The callback will take the accumulated value (or starting point on the first iteration) and the current value of the list, smashes/dices/seperates/concatinates/desolves/loveconnections them together in some-way and returns this new value.  Then, reduce will take this new value and pass it back into the callback with the next value of the list. This process repeats until every item in the list has been passed into the callback function, resulting in a single value.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Reduce is a function that takes a list, an accumulator callback and an &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// optional starting point called accumulation.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Iterate through the list. &lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// If no accumulation has been provided&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// use the first value of the list. &lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// otherwise &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// redefine accumulation as the result of passing the &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// accumulation, current value, its key and the entire list &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// into the accumulator callback.&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// after iterating through the list, return the accumulation.&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accumulation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;uses-for-reduce&quot;&gt;Uses for reduce&lt;/h3&gt;
+
+&lt;h4 id=&quot;reduce-takes-many-things-and-turns-them-into-one-thing&quot;&gt;Reduce takes many things and turns them into one thing.&lt;/h4&gt;
+
+&lt;p&gt;   Things you can do with reduce:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Finding the sum or product of a collection of numbers&lt;/li&gt;
+  &lt;li&gt;Making one string from many&lt;/li&gt;
+  &lt;li&gt;Building up properties in an object&lt;/li&gt;
+  &lt;li&gt;Flattening an array&lt;/li&gt;
+  &lt;li&gt;Determining if all or none of the items in a list pass or fail a condition&lt;/li&gt;
+  &lt;li&gt;Finding the min or max of a collection of numbers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;use-reduce-for-everything&quot;&gt;Use reduce for everything.&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;(Do you like reduce) ? (Don’t use it) : (Use it);&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Learning higher-order functions is scary.  You are passing functions into other functions, thinking about abstraction, recursion, functional programming and it’s all happening at the same time.&lt;/p&gt;
+
+&lt;p&gt;Each Map and Filter all pass the current value, its key, and the entire list into the callback function on every itieration.  It’s easy to forget that reduce passes the accumulation into the callback function before the value key and list.  If you make this mistake your code wont work as expected and its tricky to debug.  Especially since you can erase reduce and replace it with an each, map or filter, your callback works as expected, because you forgot the acc in the first place.&lt;/p&gt;
+
+&lt;p&gt;For beginers it’s important to force yourself to use reduce until it makes sense.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-use-reduce-for-everything&quot;&gt;Don’t use reduce for everything&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;you could build a house with nothing but a swiss army knife, but that doesn’t make it a good idea.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;    Since reduce is such a flexible tool, it’s important to remember that you have other tools as well.  Example: You could use reduce to find all users with a certain email address.  Reduce can do that.  Emails are unique, so there will be only one user with that email. Initially, it sounds like that’s exactly what reduce is for, right?  Taking a list and returning a single value. But, you can use _.first for that.  It’s built for that, and will perform much better than reduce will.  _.first will return as soon as it finds the email you were looking for.  While _.reduce would continue checking every single email address every single time. What if you were dealing with millions of users?&lt;/p&gt;
+
+&lt;p&gt;    Reduce is kind of like a swiss-army-knife because it can do everything. Sometimes though, all you need is a screwdriver and even though swiss-army-knives &lt;strong&gt;do&lt;/strong&gt; have screwdrivers, they suck, so you use a real screwdriver.  The &lt;em&gt;difference&lt;/em&gt; between reduce and swiss-army-knives is that sometimes reduce &lt;strong&gt;is absolutley the best tool&lt;/strong&gt; for the job, where a swiss army knife probably never is.  Reduce is more like a swiss-army-sledgehammer, you could hammer a nail with it, you could probably hammer a screw with it, but it’s made for breaking concrete.  You should always try to find a method that solves your problem directly.&lt;/p&gt;
+
+&lt;h3 id=&quot;when-to-use-reduce&quot;&gt;When to use reduce&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If an array is not the data-type you need, you shouldn’t use a method that returns an array.  Use a sledgehammer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;    Typically, when im dealing with a collection and I need to transform it, I ask, what is the result that I’m looking for?  What do I want to have returned?  If the answer &lt;strong&gt;isn’t&lt;/strong&gt; an array, I immediatley start considering reduce.  E.g. I have a list and I want an object literal, boolean, number or string.  To be clear, reduce &lt;strong&gt;can&lt;/strong&gt; return an array and there are cases that you would use it for that, like reducing/flattening nested arrays into a single flat array.  But if I want something other than an array returned, it’s &lt;strong&gt;even more likely&lt;/strong&gt; that reduce will be useful.&lt;/p&gt;
+
+&lt;p&gt;    Many list transformation methods return an array, and are clearly not ideal if one is looking for a different data type.  We’ve all used map or filter to get a results array of one thing(s) and then referenced the value inside of it with results[0].&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-more-to-reduce-later&quot;&gt;Adding more to reduce later&lt;/h3&gt;
+&lt;p&gt;I’ll continue to add to this, as reduce has many uses, some of which I don’t even know yet.  I’m sure this post has plenty of mistakes, bad advice, holes, gaps and malicious assumptions on my part.  Please don’t take anything for granted and go easy on me.  I’m learnd-ing.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading!  Let me know what you think.  Thanks.&lt;/p&gt;
 
 </description>
-        <pubDate>Thu, 04 Dec 2014 12:14:47 -0800</pubDate>
-        <link>http://vormwald.github.io/joon/jekyll/update/2014/12/04/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://vormwald.github.io/joon/jekyll/update/2014/12/04/welcome-to-jekyll.html</guid>
+        <pubDate>Thu, 19 Nov 2015 02:50:32 -0800</pubDate>
+        <link>http://raphaelbaskerville.com/coding/2015/11/19/reduce.html</link>
+        <guid isPermaLink="true">http://raphaelbaskerville.com/coding/2015/11/19/reduce.html</guid>
         
         
-        <category>jekyll</category>
+        <category>coding</category>
         
-        <category>update</category>
+      </item>
+    
+      <item>
+        <title>Skate gallery</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/bw_hd_skateboard.jpg&quot; class=&quot;fit image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;grinds-rails&quot;&gt;Grinds Rails&lt;/h2&gt;
+
+&lt;h4 id=&quot;been-skating-since-the-old-school-was-the-only-school&quot;&gt;Been skating since the old school was the only school…&lt;/h4&gt;
+
+</description>
+        <pubDate>Tue, 17 Feb 2015 00:00:00 -0800</pubDate>
+        <link>http://raphaelbaskerville.com/skate/2015/02/17/Skate-Gallery.html</link>
+        <guid isPermaLink="true">http://raphaelbaskerville.com/skate/2015/02/17/Skate-Gallery.html</guid>
+        
+        
+        <category>skate</category>
+        
+      </item>
+    
+      <item>
+        <title>Lohan</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/loloTongue.jpg&quot; class=&quot;fit image lohan&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have this fun game going.  I make a face and this little guy tries to copy me.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/loloGrouch.jpg&quot; class=&quot;fit image dog&quot; /&gt;
+&lt;img src=&quot;/images/loloLaugh.jpg&quot; class=&quot;fit image dog&quot; /&gt;
+&lt;img src=&quot;/images/loloRoar.jpg&quot; class=&quot;fit image dog&quot; /&gt;
+&lt;img src=&quot;/images/loloSomber.jpg&quot; class=&quot;fit image dog&quot; /&gt;
+&lt;img src=&quot;/images/loloSquint.jpg&quot; class=&quot;fit image dog&quot; /&gt;
+&lt;img src=&quot;/images/loloStoic.jpg&quot; class=&quot;fit image dog&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 17 Feb 2015 00:00:00 -0800</pubDate>
+        <link>http://raphaelbaskerville.com/dogs/2015/02/17/Lohan.html</link>
+        <guid isPermaLink="true">http://raphaelbaskerville.com/dogs/2015/02/17/Lohan.html</guid>
+        
+        
+        <category>dogs</category>
         
       </item>
     

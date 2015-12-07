@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    
+    <!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<head>
+
+    <title>Reduce: Extend</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style-xlarge.css" />
+    </noscript>
+</head>
+
+
+	<body id="top">
+
+        <!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><a href="/" class="site-title" >coder : 1213</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+<!--             <li><a href="/left-sidebar.html">Left Sidebar</a></li>
+            <li><a href="/right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="/no-sidebar.html">No Sidebar</a></li> -->        
+            <li><a href="/codeBlog.html">Coding</a></li>
+            <li><a href="/skateBlog.html">Skateboarding</a></li>
+            <li><a href="/dogBlog.html">Dogs</a></li>
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            <!-- <li><a href="#" class="button special">Sign Up</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+        <div class="wrapper style1">
+    <article class="container">
+        <header class="major">
+            <h2 class="post-title">Reduce: Extend</h2>
+                <p class="post-meta">Nov 21, 2015</p>
+        </header>
+
+        <section class="post-content">
+            <h2 id="extend-and-defaults">Extend and Defaults</h2>
+
+<p>  _.extend takes in an object and an arbitrary number of additional optional objects.  It takes the key/value pairs from the optional objects and adds them to the “master” object, over-writing properties that already exist.  _.defaults does the same thing except doesn’t over-write properties.</p>
+
+<h2 id="solved-with-reduce">Solved with reduce</h2>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">propsToAddObj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">propsToAddObj</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">acc</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="p">})</span>
+      <span class="k">return</span> <span class="nx">acc</span><span class="p">;</span>
+    <span class="p">})</span>
+  <span class="p">};</span>
+
+  <span class="nx">_</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">propsToAddObj</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">_</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">propsToAddObj</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">acc</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span> 
+          <span class="nx">acc</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+      <span class="k">return</span> <span class="nx">acc</span><span class="p">;</span>
+    <span class="p">})</span>
+  <span class="p">};</span>
+  </code></pre></figure>
+
+<h2 id="step-by-step-pseudo-psuedocode">Step by step pseudo-psuedocode</h2>
+
+<p>   Our arguments are an array with our original object and <em>objects-with-properties-we’d-like-to-add</em></p>
+
+<p>    While iterating _.reduce will pass one of the <em>objects-with-properties-we’d-like-to-add</em> into _.each.  Since we don’t pass a starting point in, acc will be the original object on the first iteration.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>return _.reduce(arguments, function (acc, objectWithPropsWedLikeToAdd) {
+</code></pre>
+</div>
+
+<p>    Iterate through the <em>object-with-properties-we’d-like-to-add</em>, on each iteration _.each will pass a <em>property-we’d-like-to-add</em> (a value and it’s key) to the callback.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  _.each(objectWithPropsWedLikeToAdd, function (value, key) {
+</code></pre>
+</div>
+
+<p>    The callback will either create or overwrite the property on the acc with the key and value of the current <em>property-we’d-like-to-add</em>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    acc[key] = value;
+</code></pre>
+</div>
+
+<p>    Return the acc object with brand new keys/props. On reduce’s next iteration it will pass the next <em>object-with-properties-we’d-like-to-add</em> to each, but it will use the new bigger better object to add the key/value pairs to.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  return acc;
+</code></pre>
+</div>
+
+<p>    After we have iterated through all of the <em>objects-with-properties-we’d-like-to-add</em> reduce returns the accumulation of key/value pairs, which is returned by extend.</p>
+
+<h3 id="defaults">Defaults</h3>
+
+<p>    The only difference between defaults and extend is that defaults does a check to ensure that a key doesn’t exist before it creates it, which requires passing a slightly modified callback to each.</p>
+
+<p>_.extend</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  _.each(propsToAddObj, function (value, key) {
+    acc[key] = value;       // just add key/val
+  })
+</code></pre>
+</div>
+
+<p>_.defaults</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>_.each(propsToAddObj, function (value, key) {
+    if (!acc[key]) {        // check that key does NOT exist
+      acc[key] = value;     // add key/val
+    }
+  })
+</code></pre>
+</div>
+
+        </section>
+        
+        <footer>
+            
+            <a href="/coding/2015/11/19/reduce.html" class="float-left">&larr; Previous post</a> 
+            
+        </footer>
+
+    </article>
+
+</div>
+
+
+        <!-- Footer -->
+<footer id="footer">
+    <!-- <img src="/images/pic02.jpg" class="fit image"> -->
+        <div class="container">
+        <div class="row double">
+            <div class="6u">
+                <div class="row collapse-at-2">
+                    <div class="6u">
+                        <h3>Links</h3>
+                        <ul class="alt">
+                            <li><a href="https://github.com/RaphaelBaskerville">GitHub</a></li>
+                            <li><a href="https://twitter.com/_12_13_">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/thabaskerville/">Instagram</a></li>
+                        </ul>
+                    </div>
+<!--                     <div class="6u">
+                        <h3>Faucibus</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            <div class="6u">
+    <img src="https://pbs.twimg.com/profile_images/673727734095282176/zy2TffkG.jpg" class='fit image mid'>
+                <h2>coder : 1213</h2>
+                <p>I like to blog about computer-programing, skateboarding and dog-loving!  <br>I code JavaScript, I skate street, and I pamper chihuahua.</p>
+                <ul class="icons">
+
+                    <li><a href="https://twitter.com/_12_13_" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/RaphaelBaskerville" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.instagram.com/thabaskerville/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <!-- <li>Design: <a href="http://templated.co">TEMPLATED</a></li> -->
+            <!-- <li>Images: <a href="http://unsplash.com">Unsplash</a></li> -->
+            <!-- <li>Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li> -->
+        </ul>
+    </div>
+</footer>
+
+
+    </body>
+
+</html>
