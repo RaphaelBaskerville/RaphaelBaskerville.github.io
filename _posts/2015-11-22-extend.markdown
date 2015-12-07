@@ -1,0 +1,76 @@
+---
+layout: post
+title:  "Reduce: Extend"
+date:   2015-11-21 12:50:32 -0800
+categories: coding
+---
+##Extend and Defaults
+
+
+
+  _.extend takes in an object and an arbitrary number of additional optional objects.  It takes the key/value pairs from the optional objects and adds them to the "master" object, over-writing properties that already exist.  _.defaults does the same thing except doesn't over-write properties.
+
+##Solved with reduce
+
+{% highlight js %}
+  _.extend = function(obj) {
+    return _.reduce(arguments, function (acc, propsToAddObj) {
+      _.each(propsToAddObj, function (value, key) {
+        acc[key] = value;
+      })
+      return acc;
+    })
+  };
+
+  _.defaults = function(obj) {
+    return _.reduce(arguments, function (acc, propsToAddObj) {
+      _.each(propsToAddObj, function (value, key) {
+        if (!acc[key]) { 
+          acc[key] = value;
+        }
+      })
+      return acc;
+    })
+  };
+  {% endhighlight %}
+
+##Step by step pseudo-psuedocode
+  
+   Our arguments are an array with our original object and *objects-with-properties-we'd-like-to-add*
+
+    While iterating _.reduce will pass one of the *objects-with-properties-we'd-like-to-add* into _.each.  Since we don't pass a starting point in, acc will be the original object on the first iteration.
+
+    return _.reduce(arguments, function (acc, objectWithPropsWedLikeToAdd) {
+
+
+    Iterate through the *object-with-properties-we'd-like-to-add*, on each iteration _.each will pass a *property-we'd-like-to-add* (a value and it's key) to the callback.
+
+      _.each(objectWithPropsWedLikeToAdd, function (value, key) {
+
+    The callback will either create or overwrite the property on the acc with the key and value of the current *property-we'd-like-to-add*.
+
+        acc[key] = value;
+
+    Return the acc object with brand new keys/props. On reduce's next iteration it will pass the next *object-with-properties-we'd-like-to-add* to each, but it will use the new bigger better object to add the key/value pairs to.
+
+      return acc;
+
+    After we have iterated through all of the *objects-with-properties-we'd-like-to-add* reduce returns the accumulation of key/value pairs, which is returned by extend.
+
+###Defaults
+
+    The only difference between defaults and extend is that defaults does a check to ensure that a key doesn't exist before it creates it, which requires passing a slightly modified callback to each.
+
+_.extend
+
+      _.each(propsToAddObj, function (value, key) {
+        acc[key] = value;       // just add key/val
+      })
+
+_.defaults
+
+    _.each(propsToAddObj, function (value, key) {
+        if (!acc[key]) {        // check that key does NOT exist
+          acc[key] = value;     // add key/val
+        }
+      })
