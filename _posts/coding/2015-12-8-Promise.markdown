@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "Promises"
+date:   2015-12-8 00:50:32 -0800
+categories: coding
+---
+## Promises
+
+#### Reddit post on Promises
+
+#### jbarket writes about the woes of learning async programming promises and callbacks. 
+
+...You have to structure your code in a completely different manner. It takes getting used to, but promises are the answer. Once you grasp how they work, it's (in my opinion) the cleanest, simplest way to handle async.
+You've already used them when they've been provided before. You just need to think about when you need to create your own too.
+
+So, to give a random example, I have an Angular app that does some simple logic and sets a few cookies. The rest of the site depends on that information. When I worked against it locally, the entire app just worked, but the minute it was out in the wild--app living in the client's browser, calling out to the API--those calls would sporadically end up out of order. Setting a couple of cookies doesn't take long, but it may take longer than it takes JS to reach down for the next line of code that depends on those cookies.  So, I just threw all of that code in a promise. Now, I can guarantee that the pieces of code that depend on those cookies being set don't get run until they are set, and I can still allow other code, outside of the promise chain, to continue running in parallel.
+
+And that's basically it. You put code other code is dependent on the execution of inside a promise. This may be code you wrote, or AJAX calls or some other third party library. You then chain onto that with .then() and do the work that depends on that promise in there. Inside your .then(), you can even return a new promise, and chain an additional .then() on... all in a row, not nested chaos. Then, you can .catch() at the end and get the exceptions thrown by any of those promises. You can also start up multiple promises and wait for all of them to finish before you run some other code. It's incredibly powerful.
+
+## Simple Implementation
+
+{% highlight js %}
+function readFile(filename, enc){
+  return new Promise(function (fulfill, reject){
+    fs.readFile(filename, enc, function (err, res){
+      if (err) reject(err);
+      else fulfill(res);
+    });
+  });
+}
+{% endhighlight %}
+>We use new Promise to construct the promise. We give the constructor a factory function which does the actual work. This function is called immediately with two arguments. The first argument fulfills the promise and the second argument rejects the promise. Once the operation has completed, we call the appropriate function.
+

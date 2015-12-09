@@ -8,7 +8,7 @@
 -->
 <head>
 
-    <title>coder : 1213</title>
+    <title>Promises</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -59,97 +59,55 @@
     </nav>
 </header>
 
-        <!-- Banner -->
-<section id="banner">
-    <div class="inner">
-        <h2>My Blog</h2>
-    </div>
-</section>
-<section id="main" class="wrapper style1">
-    
         <div class="wrapper style1">
-            <header class="major">
-                <h2><a href="/coding/2015/12/08/Promise.html">Promises</a></h2>
-            </header>
-            <section class="container">
-                <h2 id="promises">Promises</h2>
+    <article class="container">
+        <header class="major">
+            <h2 class="post-title">Promises</h2>
+                <p class="post-meta">Dec 8, 2015</p>
+        </header>
 
+        <section class="post-content">
+            <h2 id="promises">Promises</h2>
 
-            </section>
-            <section class="special">
-                <ul class="actions">
-                    <li><a href="/coding/2015/12/08/Promise.html" class="button ">Read More</a></li>
-                </ul>
-            </section>
-        </div>
-    
-        <div class="wrapper style2">
-            <header class="major">
-                <h2><a href="/coding/2015/11/21/extend.html">Reduce: Extend</a></h2>
-            </header>
-            <section class="container">
-                <h2 id="extend-and-defaults">Extend and Defaults</h2>
+<h4 id="reddit-post-on-promises">Reddit post on Promises</h4>
 
+<h4 id="jbarket-writes-about-the-woes-of-learning-async-programming-promises-and-callbacks">jbarket writes about the woes of learning async programming promises and callbacks.</h4>
 
-            </section>
-            <section class="special">
-                <ul class="actions">
-                    <li><a href="/coding/2015/11/21/extend.html" class="button alt">Read More</a></li>
-                </ul>
-            </section>
-        </div>
-    
-        <div class="wrapper style1">
-            <header class="major">
-                <h2><a href="/coding/2015/11/19/reduce.html">Reduce's Uses: Introduction to Reduction</a></h2>
-            </header>
-            <section class="container">
-                <blockquote>
-  <h3 id="loves-reduce-so-much-he-wrote-a-blog-about-it"><em>“Loves reduce so much he wrote a blog about it.”</em></h3>
+<p>…You have to structure your code in a completely different manner. It takes getting used to, but promises are the answer. Once you grasp how they work, it’s (in my opinion) the cleanest, simplest way to handle async.
+You’ve already used them when they’ve been provided before. You just need to think about when you need to create your own too.</p>
+
+<p>So, to give a random example, I have an Angular app that does some simple logic and sets a few cookies. The rest of the site depends on that information. When I worked against it locally, the entire app just worked, but the minute it was out in the wild–app living in the client’s browser, calling out to the API–those calls would sporadically end up out of order. Setting a couple of cookies doesn’t take long, but it may take longer than it takes JS to reach down for the next line of code that depends on those cookies.  So, I just threw all of that code in a promise. Now, I can guarantee that the pieces of code that depend on those cookies being set don’t get run until they are set, and I can still allow other code, outside of the promise chain, to continue running in parallel.</p>
+
+<p>And that’s basically it. You put code other code is dependent on the execution of inside a promise. This may be code you wrote, or AJAX calls or some other third party library. You then chain onto that with .then() and do the work that depends on that promise in there. Inside your .then(), you can even return a new promise, and chain an additional .then() on… all in a row, not nested chaos. Then, you can .catch() at the end and get the exceptions thrown by any of those promises. You can also start up multiple promises and wait for all of them to finish before you run some other code. It’s incredibly powerful.</p>
+
+<h2 id="simple-implementation">Simple Implementation</h2>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">enc</span><span class="p">){</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">fulfill</span><span class="p">,</span> <span class="nx">reject</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">enc</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="k">else</span> <span class="nx">fulfill</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>We use new Promise to construct the promise. We give the constructor a factory function which does the actual work. This function is called immediately with two arguments. The first argument fulfills the promise and the second argument rejects the promise. Once the operation has completed, we call the appropriate function.</p>
 </blockquote>
 
 
-            </section>
-            <section class="special">
-                <ul class="actions">
-                    <li><a href="/coding/2015/11/19/reduce.html" class="button ">Read More</a></li>
-                </ul>
-            </section>
-        </div>
-    
-        <div class="wrapper style2">
-            <header class="major">
-                <h2><a href="/skate/2015/02/17/Skate-Gallery.html">Skate gallery</a></h2>
-            </header>
-            <section class="container">
-                <p><img src="/images/bw_hd_skateboard.jpg" class="fit image" /></p>
+        </section>
+        
+        <footer>
+            
+            <a href="/coding/2015/11/21/extend.html" class="float-left">&larr; Previous post</a> 
+            
+        </footer>
 
+    </article>
 
-            </section>
-            <section class="special">
-                <ul class="actions">
-                    <li><a href="/skate/2015/02/17/Skate-Gallery.html" class="button alt">Read More</a></li>
-                </ul>
-            </section>
-        </div>
-    
-        <div class="wrapper style1">
-            <header class="major">
-                <h2><a href="/dogs/2015/02/17/Lohan.html">Lohan</a></h2>
-            </header>
-            <section class="container">
-                <p><img src="/images/loloTongue.jpg" class="fit image lohan" /></p>
+</div>
 
-
-            </section>
-            <section class="special">
-                <ul class="actions">
-                    <li><a href="/dogs/2015/02/17/Lohan.html" class="button ">Read More</a></li>
-                </ul>
-            </section>
-        </div>
-    
-</section>
 
         <!-- Footer -->
 <footer id="footer">
