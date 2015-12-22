@@ -10,4 +10,9 @@ categories: skate
 
 #### circa 2004 - Shot in about an hour in Venice Beach.  Not the cleanest footage or tricks but posted it anyway.  Thanks Aaron Campbell.
 
+<img src="{{ site.baseurl }}/images/rSkate1.jpg" class="fit image">
+
+#### Venice Beach Boardwalk before the new skatepark.
+
+
 
