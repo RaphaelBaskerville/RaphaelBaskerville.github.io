@@ -6,13 +6,15 @@
 </description>
     <link>http://raphaelbaskerville.com/</link>
     <atom:link href="http://raphaelbaskerville.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 22 Dec 2015 15:20:22 -0800</pubDate>
-    <lastBuildDate>Tue, 22 Dec 2015 15:20:22 -0800</lastBuildDate>
+    <pubDate>Tue, 22 Dec 2015 15:29:31 -0800</pubDate>
+    <lastBuildDate>Tue, 22 Dec 2015 15:29:31 -0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Https With Godaddy</title>
-        <description>&lt;p&gt;godaddy help link: https://www.godaddy.com/help/http-vs-https-5454&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/images/HTTPS/htaccess.jpg&quot; class=&quot;fit image small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;godaddy help link: https://www.godaddy.com/help/http-vs-https-5454&lt;/p&gt;
 
 &lt;p&gt;HTTP VS. HTTPS&lt;/p&gt;
 
@@ -76,7 +78,7 @@
     
       <item>
         <title>Promises</title>
-        <description>&lt;h2 id=&quot;promises&quot;&gt;Promises&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;ajax-promises&quot;&gt;Ajax Promises&lt;/h2&gt;
 
 &lt;h4 id=&quot;reddit-post-on-promises&quot;&gt;Reddit post on Promises&lt;/h4&gt;
 

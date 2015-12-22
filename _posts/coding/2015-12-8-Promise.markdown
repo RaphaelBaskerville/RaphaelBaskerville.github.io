@@ -4,7 +4,7 @@ title:  "Promises"
 date:   2015-12-8 00:50:32 -0800
 categories: coding
 ---
-## Promises
+## Ajax Promises
 
 #### Reddit post on Promises
 
