@@ -4,5 +4,14 @@ categories: skate
 ---
 <img src="{{ site.baseurl }}/images/bw_hd_skateboard.jpg" class="fit image">
 
+#### HD skate photography!
+
+<img src="{{ site.baseurl }}/images/skate1.jpg" class="fit image">
+<img src="{{ site.baseurl }}/images/skate2.jpg" class="fit image">
+<img src="{{ site.baseurl }}/images/skate4.jpg" class="fit image">
+<img src="{{ site.baseurl }}/images/skate5.jpg" class="fit image">
+<img src="{{ site.baseurl }}/images/skate6.jpg" class="fit image">
+<img src="{{ site.baseurl }}/images/skate7.jpg" class="fit image">
+
 
 
