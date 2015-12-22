@@ -8,6 +8,6 @@ categories: skate
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iazhZ9uhPEA" frameborder="0" allowfullscreen></iframe>
 
-#### circa 2004 - Shot in about an hour in Venice Beach.  Not the cleanest footage or tricks.  Thanks Aaron Campbell.
+#### circa 2004 - Shot in about an hour in Venice Beach.  Not the cleanest footage or tricks but posted it anyway.  Thanks Aaron Campbell.
 
 
