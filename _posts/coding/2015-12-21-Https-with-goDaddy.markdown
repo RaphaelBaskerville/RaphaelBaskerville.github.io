@@ -2,9 +2,7 @@
 layout: post
 categories: coding
 ---
-godaddy help link:
-
-https://www.godaddy.com/help/http-vs-https-5454
+godaddy help link: https://www.godaddy.com/help/http-vs-https-5454
 
 HTTP VS. HTTPS
 
