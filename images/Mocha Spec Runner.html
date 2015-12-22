@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Mocha Spec Runner</title>
+
+    <!-- library files -->
+    <script src="./Mocha Spec Runner_files/jquery-1.8.3.js"></script>
+    <script src="./Mocha Spec Runner_files/underscore.js"></script>
+    <script src="./Mocha Spec Runner_files/backbone.js"></script>
+
+    <!-- testing frameworks -->
+    <link rel="stylesheet" href="./Mocha Spec Runner_files/mocha.css">
+    <script src="./Mocha Spec Runner_files/mocha.js"></script>
+    <script src="./Mocha Spec Runner_files/chai.js"></script>
+    <script src="./Mocha Spec Runner_files/sinon.js"></script>
+    <script>
+      mocha.setup('bdd');
+      window.expect = chai.expect;
+      $(function() {
+        window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+      });
+    </script>
+
+    <!-- source files -->
+    <script src="./Mocha Spec Runner_files/Board.js"></script>
+    <script src="./Mocha Spec Runner_files/BoardView.js"></script>
+    <script src="./Mocha Spec Runner_files/solvers.js"></script>
+
+    <!-- tests -->
+    <!-- <script src="spec/BoardSpec.js"></script>
+    <script src="spec/BoardViewSpec.js"></script> -->
+    <script src="./Mocha Spec Runner_files/solversSpec.js"></script>
+  </head>
+  <body>
+    <div id="mocha"><ul id="mocha-stats"><li class="progress"><canvas width="40" height="40"></canvas></li><li class="passes"><a href="file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html#">passes:</a> <em>1</em></li><li class="failures"><a href="file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html#">failures:</a> <em>0</em></li><li class="duration">duration: <em>8.18</em>s</li></ul><ul id="mocha-report"><li class="suite"><h1><a href="file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html?grep=solvers">solvers</a></h1><ul><li class="suite"><h1><a href="file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html?grep=solvers%20findNQueensSolution()">findNQueensSolution()</a></h1><ul><li class="test pass slow"><h2>finds a valid solution for n of 0-7<span class="duration">8177ms</span> <a href="file:///Users/imSins/tga/2015-11-n-queens/SpecRunner.html?grep=solvers%20findNQueensSolution()%20finds%20a%20valid%20solution%20for%20n%20of%200-7" class="replay">‣</a></h2><pre style="display: none;"><code><span class="comment">// Skip <span class="number">2</span> and <span class="number">3</span> because they have no solution.</span>
+[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>].map(<span class="keyword">function</span>(n) {
+  <span class="keyword">var</span> solutionBoard = <span class="keyword"><span class="keyword">new</span></span> <span class="init">Board</span>(findNQueensSolution(n));
+  <span class="keyword">var</span> numPieces = _.reduce(solutionBoard.rows(), <span class="keyword">function</span>(memo, row) {
+    <span class="keyword">return</span> memo + _.reduce(row, <span class="keyword">function</span>(memo, col) {
+      <span class="keyword">return</span> memo + col;
+    }, <span class="number">0</span>);
+  }, <span class="number">0</span>);
+
+  expect(solutionBoard.get(<span class="string">'n'</span>)).to.equal(n);
+  expect(numPieces).to.equal(n);
+  expect(solutionBoard.hasAnyQueensConflicts()).to.be.equal(false);
+});
+
+<span class="comment">// Check <span class="number">2</span> and <span class="number">3</span> for no solution</span>
+[].map(<span class="keyword">function</span> (n) {
+  <span class="keyword">var</span> solutionBoard = <span class="keyword"><span class="keyword">new</span></span> <span class="init">Board</span>(findNQueensSolution(n));
+  <span class="keyword">var</span> numPieces = _.reduce(solutionBoard.rows(), <span class="keyword">function</span>(memo, row) {
+    <span class="keyword">return</span> memo + _.reduce(row, <span class="keyword">function</span>(memo, col) {
+      <span class="keyword">return</span> memo + col;
+    }, <span class="number">0</span>);
+  }, <span class="number">0</span>);
+
+  expect(numPieces).to.equal(<span class="number">0</span>);
+  expect(solutionBoard.get(<span class="string">'n'</span>)).to.equal(n);
+});</code></pre></li></ul></li></ul></li></ul></div>
+  
+
+</body></html>
