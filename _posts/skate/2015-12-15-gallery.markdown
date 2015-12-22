@@ -1,0 +1,8 @@
+---
+layout: post
+categories: skate
+---
+<img src="{{ site.baseurl }}/images/bw_hd_skateboard.jpg" class="fit image">
+
+
+
