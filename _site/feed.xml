@@ -6,9 +6,52 @@
 </description>
     <link>http://raphaelbaskerville.com/</link>
     <atom:link href="http://raphaelbaskerville.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 22 Dec 2015 13:14:36 -0800</pubDate>
-    <lastBuildDate>Tue, 22 Dec 2015 13:14:36 -0800</lastBuildDate>
+    <pubDate>Tue, 22 Dec 2015 15:18:00 -0800</pubDate>
+    <lastBuildDate>Tue, 22 Dec 2015 15:18:00 -0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Https With Godaddy</title>
+        <description>&lt;p&gt;godaddy help link:&lt;/p&gt;
+
+&lt;p&gt;https://www.godaddy.com/help/http-vs-https-5454&lt;/p&gt;
+
+&lt;p&gt;HTTP VS. HTTPS&lt;/p&gt;
+
+&lt;p&gt;HTTP, or hypertext transfer protocol, is the way a Web server communicates with browsers like Internet Explorer® and Mozilla Firefox®. HTTP lets visitors view a site and send information back to the Web server.&lt;/p&gt;
+
+&lt;p&gt;HTTPS, hypertext transfer protocol secure, is HTTP through a secured connection. Communications through an HTTPS server are encrypted by a secure certificate known as an SSL. The encryption prevents third-parties from eavesdropping on communications to and from the server.&lt;/p&gt;
+
+&lt;p&gt;Only servers that have their own SSL can create HTTPS connections. A site’s visitor cannot encrypt the connection.&lt;/p&gt;
+
+&lt;p&gt;If you have a hosting account with an SSL encrypting its connection, you can automatically redirect visitors to the HTTPS version of your site.&lt;/p&gt;
+
+&lt;h2 id=&quot;follow-these-steps&quot;&gt;Follow these steps:&lt;/h2&gt;
+
+&lt;p&gt;Find the security options on the main cPanel page and click on the SSL/TLS icon to view SSL options.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssltls-options&quot;&gt;SSL/TLS options:&lt;/h2&gt;
+
+&lt;p&gt;Click the link for (CSR)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/HTTPS/httpsStep1.jpg&quot; class=&quot;fit image small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter your domain name and click generate at the bottom of the screen.  Now you have a certificate attached to your domain, but you still need to install it.  To install the certificate, go back to the SSL/TLS menu.&lt;/p&gt;
+
+&lt;p&gt;Click the link for managing your SSL sites&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/HTTPS/httpsStep2.jpg&quot; class=&quot;fit image small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fill out the form, click install, and you’re done.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Dec 2015 00:00:00 -0800</pubDate>
+        <link>http://raphaelbaskerville.com/coding/2015/12/21/Https-with-goDaddy.html</link>
+        <guid isPermaLink="true">http://raphaelbaskerville.com/coding/2015/12/21/Https-with-goDaddy.html</guid>
+        
+        
+        <category>coding</category>
+        
+      </item>
     
       <item>
         <title>Gallery</title>

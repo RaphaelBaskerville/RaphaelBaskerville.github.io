@@ -508,11 +508,16 @@
 			
 			
 		}
-			.image.fit img {
-				display: block;
-				width: 100%;
+		.image.fit img {
+			display: block;
+			width: 100%;
 
-			}
+		}
+		.image.fit.small img {
+				display: block;
+				width: 50%;
+
+			}	
 
 /* List */
 
