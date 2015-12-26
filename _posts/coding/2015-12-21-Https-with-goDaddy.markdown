@@ -5,7 +5,7 @@ categories: coding
 
 <img src="{{ site.baseurl }}/images/HTTPS/htaccess.jpg" class="fit image small">
 
-godaddy help link: https://www.godaddy.com/help/http-vs-https-5454
+*From the goDaddy.com web-site*
 
 HTTP VS. HTTPS
 
