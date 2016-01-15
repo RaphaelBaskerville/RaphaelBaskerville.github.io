@@ -18,7 +18,8 @@ var app = express();
 var path = require("path");
 // Require the app js file in whice we connect to the database.
 var db = require('./public/app.js');
-// Use some logic to update the port dynamically depending on where the app is being served.  This line allows our server to use the port provided when your app is deployed or default to 8080 if there is no environmental port supplied.
+// Use some logic to update the port dynamically depending on where the app is being served.  
+// This line allows our server to use the port provided when your app is deployed or default to 8080 if there is no environmental port supplied.
 var port = process.env.PORT || 8080;
 // Body parser helps with parsing and stringifying data coming in and going out of the server.
 var bodyParser = require('body-parser');
