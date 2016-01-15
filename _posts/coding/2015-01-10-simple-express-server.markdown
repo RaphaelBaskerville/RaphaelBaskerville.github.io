@@ -14,7 +14,7 @@ categories: coding
 // Using express will simplify much of the code you are writing on the server-side.
 var express = require('express');
 var app = express();
-// path grants useful pathing functionality. \__dirname which ensures that your path will always start at the root of your app's directory
+// path grants useful pathing functionality. __dirname which ensures that your path will always start at the root of your app's directory
 var path = require("path");
 // Require the app js file in whice we connect to the database.
 var db = require('./public/app.js');
@@ -27,12 +27,12 @@ var bodyParser = require('body-parser');
 // This is where we tell our app to use some of the middleware we required above.
 
 // Express static specifies the directory in which the server should look first to serve files.
-app.use(express.static(\__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 // Here we tell the server which format to parse data to.
 app.use(bodyParser.json());
 
-// Define waht the server should do when it receives a get request to /url.
+// Define what the server should do when it receives a get request to /url.
 app.get('/data', function (req,res) {
   if (err) { // if there was an error
     respond with status code 500
