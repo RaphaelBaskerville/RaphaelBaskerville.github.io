@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    
+    <!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<head>
+
+    <title>Simple Express Server</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style-xlarge.css" />
+    </noscript>
+</head>
+
+
+	<body id="top">
+
+        <!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><a href="/" class="site-title" >coder : 1213</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+<!--             <li><a href="/left-sidebar.html">Left Sidebar</a></li>
+            <li><a href="/right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="/no-sidebar.html">No Sidebar</a></li> -->        
+            <li><a href="/codeBlog.html">Coding</a></li>
+            <li><a href="/skateBlog.html">Skateboarding</a></li>
+            <li><a href="/dogBlog.html">Dogs</a></li>
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            <!-- <li><a href="#" class="button special">Sign Up</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+        <div class="wrapper style1">
+    <article class="container">
+        <header class="major">
+            <h2 class="post-title">Simple Express Server</h2>
+                <p class="post-meta">Jan 10, 2016</p>
+        </header>
+
+        <section class="post-content">
+            <h1 id="express-and-node">Express and Node</h1>
+
+<h2 id="making-a-simple-server">Making a simple server.</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Require</span> <span class="n">express</span> <span class="n">and</span> <span class="n">define</span> <span class="n">app</span> <span class="n">as</span> <span class="n">an</span> <span class="n">express</span> <span class="n">instance</span><span class="p">.</span>
+<span class="nf">/</span><span class="o">/</span> <span class="no">Using</span> <span class="n">express</span> <span class="n">will</span> <span class="n">simplify</span> <span class="n">much</span> <span class="n">of</span> <span class="n">the</span> <span class="n">code</span> <span class="n">you</span> <span class="n">are</span> <span class="n">writing</span> <span class="n">on</span> <span class="n">the</span> <span class="n">server</span><span class="o">-</span><span class="n">side</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">express</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="n">var</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">();</span>
+<span class="sr">//</span> <span class="n">path</span> <span class="n">grants</span> <span class="n">useful</span> <span class="n">pathing</span> <span class="n">functionality</span><span class="o">.</span> <span class="p">\</span><span class="n">__dirname</span> <span class="n">which</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">your</span> <span class="n">path</span> <span class="n">will</span> <span class="n">always</span> <span class="n">start</span> <span class="n">at</span> <span class="n">the</span> <span class="n">root</span> <span class="n">of</span> <span class="n">your</span> <span class="n">app</span><span class="s1">'s directory
+var path = require("path");
+// Require the app js file in whice we connect to the database.
+var db = require('</span><span class="p">.</span><span class="nf">/</span><span class="kp">public</span><span class="sr">/app.js');
+/</span><span class="o">/</span> <span class="no">Use</span> <span class="n">some</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">update</span> <span class="n">the</span> <span class="n">port</span> <span class="n">dynamically</span> <span class="n">depending</span> <span class="n">on</span> <span class="n">where</span> <span class="n">the</span> <span class="n">app</span> <span class="n">is</span> <span class="n">being</span> <span class="n">served</span><span class="o">.</span>  <span class="no">This</span> <span class="n">line</span> <span class="n">allows</span> <span class="n">our</span> <span class="n">server</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">port</span> <span class="n">provided</span> <span class="k">when</span> <span class="n">your</span> <span class="n">app</span> <span class="n">is</span> <span class="n">deployed</span> <span class="n">or</span> <span class="n">default</span> <span class="n">to</span> <span class="mi">8080</span> <span class="k">if</span> <span class="n">there</span> <span class="n">is</span> <span class="n">no</span> <span class="n">environmental</span> <span class="n">port</span> <span class="n">supplied</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">port</span> <span class="o">=</span> <span class="n">process</span><span class="p">.</span><span class="nf">env</span><span class="o">.</span><span class="no">PORT</span> <span class="o">||</span> <span class="mi">8080</span><span class="p">;</span>
+<span class="sr">//</span> <span class="no">Body</span> <span class="n">parser</span> <span class="n">helps</span> <span class="n">with</span> <span class="n">parsing</span> <span class="n">and</span> <span class="n">stringifying</span> <span class="n">data</span> <span class="n">coming</span> <span class="k">in</span> <span class="n">and</span> <span class="n">going</span> <span class="n">out</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">bodyParser</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">'body-parser'</span><span class="p">);</span>
+
+<span class="sr">//</span> <span class="no">Middleware</span><span class="p">:</span>
+<span class="sr">//</span> <span class="no">This</span> <span class="n">is</span> <span class="n">where</span> <span class="n">we</span> <span class="n">tell</span> <span class="n">our</span> <span class="n">app</span> <span class="n">to</span> <span class="n">use</span> <span class="n">some</span> <span class="n">of</span> <span class="n">the</span> <span class="n">middleware</span> <span class="n">we</span> <span class="n">required</span> <span class="n">above</span><span class="p">.</span>
+
+<span class="nf">/</span><span class="o">/</span> <span class="no">Express</span> <span class="n">static</span> <span class="n">specifies</span> <span class="n">the</span> <span class="n">directory</span> <span class="k">in</span> <span class="n">which</span> <span class="n">the</span> <span class="n">server</span> <span class="n">should</span> <span class="n">look</span> <span class="n">first</span> <span class="n">to</span> <span class="n">serve</span> <span class="n">files</span><span class="p">.</span>
+<span class="nf">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="n">express</span><span class="p">.</span><span class="nf">static</span><span class="p">(\</span><span class="n">__dirname</span> <span class="o">+</span> <span class="s1">'/public'</span><span class="p">));</span>
+
+<span class="sr">//</span> <span class="no">Here</span> <span class="n">we</span> <span class="n">tell</span> <span class="n">the</span> <span class="n">server</span> <span class="n">which</span> <span class="nb">format</span> <span class="n">to</span> <span class="n">parse</span> <span class="n">data</span> <span class="n">to</span><span class="p">.</span>
+<span class="nf">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="n">bodyParser</span><span class="p">.</span><span class="nf">json</span><span class="p">());</span>
+
+<span class="sr">//</span> <span class="no">Define</span> <span class="n">waht</span> <span class="n">the</span> <span class="n">server</span> <span class="n">should</span> <span class="k">do</span> <span class="k">when</span> <span class="n">it</span> <span class="n">receives</span> <span class="n">a</span> <span class="n">get</span> <span class="n">request</span> <span class="n">to</span> <span class="sr">/url.
+app.get('/</span><span class="n">data</span><span class="s1">', function (req,res) {
+  if (err) { // if there was an error
+    respond with status code 500
+    res.send(500);
+  } else { // if there was no error
+    // respond with status code 200 and send the data.
+    res.status(200).send('</span><span class="no">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">data</span><span class="s1">');
+
+  });
+});
+
+// Post request handling
+app.post('</span><span class="o">/</span><span class="n">data</span><span class="err">'</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span><span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="sr">//</span> <span class="k">do</span> <span class="n">something</span> <span class="n">with</span> <span class="n">the</span> <span class="n">data</span>
+  <span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="p">);</span>
+  <span class="sr">//</span> <span class="nb">send</span> <span class="n">a</span> <span class="n">status</span> <span class="n">code</span> <span class="n">of</span> <span class="mi">200</span><span class="p">.</span>
+  <span class="nf">res</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">send</span><span class="p">()</span>
+<span class="p">});</span>
+
+
+<span class="sr">//</span> <span class="n">set</span> <span class="n">the</span> <span class="n">port</span> <span class="n">to</span> <span class="n">listen</span> <span class="n">on</span><span class="p">.</span>
+<span class="nf">app</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="n">port</span><span class="p">);</span></code></pre></figure>
+
+
+        </section>
+        
+        <footer>
+            
+            <a href="/coding/2015/12/21/Https-with-goDaddy.html" class="float-left">&larr; Previous post</a> 
+            
+        </footer>
+
+    </article>
+
+</div>
+
+
+        <!-- Footer -->
+<footer id="footer">
+    <!-- <img src="/images/pic02.jpg" class="fit image"> -->
+        <div class="container">
+        <div class="row double">
+            <div class="6u">
+                <div class="row collapse-at-2">
+                    <div class="6u">
+                        <h3>Links</h3>
+                        <ul class="alt">
+                            <li><a href="https://github.com/RaphaelBaskerville">GitHub</a></li>
+                            <li><a href="https://twitter.com/_12_13_">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/thabaskerville/">Instagram</a></li>
+                        </ul>
+                    </div>
+<!--                     <div class="6u">
+                        <h3>Faucibus</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            <div class="6u">
+    <img src="https://pbs.twimg.com/profile_images/673727734095282176/zy2TffkG.jpg" class='fit image mid'>
+                <h2>coder : 1213</h2>
+                <p>I like to blog about computer-programing, skateboarding and dog-loving!  <br>I code JavaScript, I skate street, and I pamper chihuahua.</p>
+                <ul class="icons">
+
+                    <li><a href="https://twitter.com/_12_13_" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/RaphaelBaskerville" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.instagram.com/thabaskerville/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <!-- <li>Design: <a href="http://templated.co">TEMPLATED</a></li> -->
+            <!-- <li>Images: <a href="http://unsplash.com">Unsplash</a></li> -->
+            <!-- <li>Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li> -->
+        </ul>
+    </div>
+</footer>
+
+
+    </body>
+
+</html>
