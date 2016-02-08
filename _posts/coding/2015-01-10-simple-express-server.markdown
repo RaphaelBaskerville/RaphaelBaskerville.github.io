@@ -33,7 +33,7 @@ app.use(express.static(__dirname + '/public'));
 // Here we tell the server which format to parse data to.
 app.use(bodyParser.json());
 
-// Define what the server should do when it receives a get request to /url.
+// Define what the server should do when it receives a get request to /url
 app.get('/data', function (req,res) {
   if (err) { // if there was an error
     respond with status code 500
