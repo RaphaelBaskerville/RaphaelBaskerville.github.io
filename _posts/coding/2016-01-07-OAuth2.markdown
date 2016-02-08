@@ -11,6 +11,10 @@ categories: coding
 
   In order to make requests to Twitter you have to authenticate yourself.   In this example, instead of authenticating an actual user, we authenticate the application itself.
 
+   First, you need to register your app with twitter to aquire a key and secret at [apps.twitter.com][twitter-apps]. 
+
+   Then we format the strings into an encoded buffer object that we can send to twitter. 
+
 {% highlight ruby %}
 //////////////////////////////////////////////////////////////////
 //Set up and send a request for our application-only oAuth token.
@@ -33,7 +37,7 @@ var bufferedToken = new Buffer(bearerTokenCred);
 var encodedAndBufferedToken = bufferedToken.toString('base64');
 {% endhighlight %}
   
-  You need to aquire the keys and secret for your app after you register it with twitter. 
+  In the next section we set the request object up. 
 
 {% highlight ruby %}
 
@@ -49,6 +53,12 @@ var options = {
   },
 };
 
+{% endhighlight %}
+  
+  Finally we make the request.
+
+{% highlight ruby %}
+
 // request and save an application-only token from twitter
 request(options, function (err, response, body) {
   if (err) {
@@ -58,8 +68,44 @@ request(options, function (err, response, body) {
   twitterAppToken = JSON.parse(body);
 });
 
-app.listen(port);
 {% endhighlight %}
+  
+  Awesome!! You have a token.  Lets use it to get some data back from twitter.
+
+  In this example we grab a users last tweet.
+
+{% highlight ruby %}
+
+///////////////////////////////
+// get tweets
+///////////////////////////////
+
+// here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
+// route has one param, a twitter users handle.
+.get('/tweets/:handle', function (req, outerResponse, next) {
+  // set options
+  var options = {
+    // append the user's handle to the url
+    url: 'https://api.twitter.com/1.1/statuses/user_timeline.json?count=1&screen_name=' + req.params.handle,
+    method: 'GET',
+    headers: {
+      // append the access token to the string Bearer with a space.
+      Authorization: 'Bearer ' + twitterAppToken.access_token,
+    },
+  };
+
+  // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
+  request(options, function (err, innerResponse, body) {
+    console.log(JSON.parse(body)[0].text);
+    outerResponse.status(200).send(JSON.parse(body)[0]);
+  });
+});
+
+
+{% endhighlight %}
+
+
+
 
 [twitter-apps]: https://apps.twitter.com/
 

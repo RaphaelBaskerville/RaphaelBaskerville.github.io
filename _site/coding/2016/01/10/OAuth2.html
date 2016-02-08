@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    
+    <!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<head>
+
+    <title>How to retrieve any users last tweet using the Twitter API</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/skel-layers.min.js"></script>
+    <script src="/js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style-xlarge.css" />
+    </noscript>
+</head>
+
+
+	<body id="top">
+
+        <!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><a href="/" class="site-title" >coder : 1213</a></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+<!--             <li><a href="/left-sidebar.html">Left Sidebar</a></li>
+            <li><a href="/right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="/no-sidebar.html">No Sidebar</a></li> -->        
+            <li><a href="/codeBlog.html">Coding</a></li>
+            <li><a href="/skateBlog.html">Skateboarding</a></li>
+            <li><a href="/dogBlog.html">Dogs</a></li>
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            <!-- <li><a href="#" class="button special">Sign Up</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+        <div class="wrapper style1">
+    <article class="container">
+        <header class="major">
+            <h2 class="post-title">How to retrieve any users last tweet using the Twitter API</h2>
+                <p class="post-meta">Jan 10, 2016</p>
+        </header>
+
+        <section class="post-content">
+            <h1 id="using-express-to-get-tweets-from-any-user">Using Express to get tweets from any user.</h1>
+
+<h2 id="oauth2-application-only-token">OAuth2 Application-only token.</h2>
+
+<p>In order to make requests to Twitter you have to authenticate yourself.   In this example, instead of authenticating an actual user, we authenticate the application itself.</p>
+
+<p>First, you need to register your app with twitter to aquire a key and secret at <a href="https://apps.twitter.com/">apps.twitter.com</a>.</p>
+
+<p>Then we format the strings into an encoded buffer object that we can send to twitter.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span>
+<span class="sr">//</span><span class="no">Set</span> <span class="n">up</span> <span class="n">and</span> <span class="nb">send</span> <span class="n">a</span> <span class="n">request</span> <span class="k">for</span> <span class="n">our</span> <span class="n">application</span><span class="o">-</span><span class="n">only</span> <span class="n">oAuth</span> <span class="n">token</span><span class="p">.</span>
+<span class="nf">/</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span>
+
+<span class="sr">//</span> <span class="n">create</span> <span class="n">a</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">hold</span> <span class="n">our</span> <span class="n">token</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">twitterAppToken</span><span class="p">;</span>
+
+<span class="sr">//</span> <span class="n">store</span> <span class="n">our</span> <span class="n">twitter</span> <span class="n">key</span> <span class="n">and</span> <span class="n">secret</span>
+<span class="n">var</span> <span class="n">consumerKey</span> <span class="o">=</span> <span class="s1">'xxxxxxxxxxxxxxx'</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">consumerSecret</span> <span class="o">=</span> <span class="s1">'xxxxxxxxxxxxxxxxxx'</span><span class="p">;</span>
+
+<span class="sr">//</span> <span class="n">concat</span> <span class="n">the</span> <span class="n">key</span> <span class="n">and</span> <span class="n">secret</span> <span class="n">seperated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">colon</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">bearerTokenCred</span> <span class="o">=</span> <span class="n">consumerKey</span> <span class="o">+</span> <span class="s1">':'</span> <span class="o">+</span> <span class="n">consumerSecret</span><span class="p">;</span>
+
+<span class="sr">//</span> <span class="n">pass</span> <span class="n">the</span> <span class="n">key</span> <span class="n">string</span> <span class="n">into</span> <span class="no">Buffer</span> <span class="n">constructor</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">buffer</span> <span class="n">obj</span><span class="p">.</span>
+<span class="nf">var</span> <span class="n">bufferedToken</span> <span class="o">=</span> <span class="kp">new</span> <span class="no">Buffer</span><span class="p">(</span><span class="n">bearerTokenCred</span><span class="p">);</span>
+
+<span class="sr">//</span> <span class="n">encode</span> <span class="n">the</span> <span class="n">buffer</span> <span class="n">object</span> <span class="k">in</span> <span class="n">base64</span>
+<span class="n">var</span> <span class="n">encodedAndBufferedToken</span> <span class="o">=</span> <span class="n">bufferedToken</span><span class="p">.</span><span class="nf">toString</span><span class="p">(</span><span class="s1">'base64'</span><span class="p">);</span></code></pre></figure>
+
+<p>In the next section we set the request object up.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="n">set</span> <span class="n">up</span> <span class="n">options</span><span class="p">,</span> <span class="n">you</span> <span class="n">need</span> <span class="n">quotes</span> <span class="n">around</span> <span class="n">keys</span> <span class="n">with</span> <span class="n">hyphens</span>
+<span class="n">var</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">url: </span><span class="s1">'https://api.twitter.com/oauth2/token'</span><span class="p">,</span>
+  <span class="ss">body: </span><span class="s1">'grant_type=client_credentials'</span><span class="p">,</span>
+  <span class="ss">method: </span><span class="s1">'POST'</span><span class="p">,</span>
+  <span class="s1">'Accept-Encoding'</span><span class="p">:</span> <span class="s1">'gzip'</span><span class="p">,</span>
+  <span class="ss">headers: </span><span class="p">{</span>
+    <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Basic '</span> <span class="o">+</span> <span class="n">encodedAndBufferedToken</span><span class="p">,</span>
+    <span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/x-www-form-urlencoded;charset=UTF-8'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Finally we make the request.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="n">request</span> <span class="n">and</span> <span class="n">save</span> <span class="n">an</span> <span class="n">application</span><span class="o">-</span><span class="n">only</span> <span class="n">token</span> <span class="n">from</span> <span class="n">twitter</span>
+<span class="n">request</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">twitterAppToken</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">body</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Awesome!! You have a token.  Lets use it to get some data back from twitter.</p>
+
+<p>In this example we grab a users last tweet.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">/
+/</span><span class="o">/</span> <span class="n">get</span> <span class="n">tweets</span>
+<span class="sr">////</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span><span class="o">/</span><span class="sr">//</span>
+
+<span class="sr">//</span> <span class="n">here</span> <span class="n">we</span> <span class="n">set</span> <span class="n">up</span> <span class="n">the</span> <span class="n">get</span> <span class="n">handler</span> <span class="n">that</span> <span class="n">will</span> <span class="nb">send</span> <span class="n">a</span> <span class="n">request</span> <span class="k">for</span> <span class="n">the</span> <span class="n">users</span> <span class="n">tweet</span> <span class="n">and</span> <span class="k">then</span> <span class="nb">send</span> <span class="n">it</span> <span class="n">to</span> <span class="n">our</span> <span class="n">client</span><span class="o">-</span><span class="n">side</span> <span class="n">app</span><span class="p">.</span>
+<span class="nf">/</span><span class="o">/</span> <span class="n">route</span> <span class="n">has</span> <span class="n">one</span> <span class="n">param</span><span class="p">,</span> <span class="n">a</span> <span class="n">twitter</span> <span class="n">users</span> <span class="n">handle</span><span class="p">.</span>
+<span class="nf">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'/tweets/:handle'</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">outerResponse</span><span class="p">,</span> <span class="k">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="sr">//</span> <span class="n">set</span> <span class="n">options</span>
+  <span class="n">var</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sr">//</span> <span class="n">append</span> <span class="n">the</span> <span class="n">user</span><span class="s1">'s handle to the url
+    url: '</span><span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">api</span><span class="p">.</span><span class="nf">twitter</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="mi">1</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">statuses</span><span class="o">/</span><span class="n">user_timeline</span><span class="p">.</span><span class="nf">json?</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">' + req.params.handle,
+    method: '</span><span class="no">GET</span><span class="s1">',
+    headers: {
+      // append the access token to the string Bearer with a space.
+      Authorization: '</span><span class="no">Bearer</span> <span class="err">'</span> <span class="o">+</span> <span class="n">twitterAppToken</span><span class="p">.</span><span class="nf">access_token</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+
+  <span class="sr">//</span> <span class="no">Send</span> <span class="n">a</span> <span class="n">get</span> <span class="n">request</span> <span class="n">to</span> <span class="n">twitter</span><span class="p">,</span> <span class="n">notice</span> <span class="n">that</span> <span class="n">the</span> <span class="n">response</span> <span class="n">that</span> <span class="n">we</span> <span class="nb">send</span> <span class="k">in</span> <span class="n">the</span> <span class="n">callback</span> <span class="n">is</span> <span class="n">the</span> <span class="n">response</span> <span class="n">from</span> <span class="n">the</span> <span class="n">outer</span><span class="o">-</span><span class="n">function</span> <span class="n">passed</span> <span class="k">in</span> <span class="n">through</span> <span class="n">closure</span><span class="p">.</span>
+  <span class="nf">request</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">innerResponse</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">body</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nf">text</span><span class="p">);</span>
+    <span class="n">outerResponse</span><span class="p">.</span><span class="nf">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nf">send</span><span class="p">(</span><span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">body</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+
+        </section>
+        
+        <footer>
+            
+            <a href="/coding/2016/01/10/simple-express-server.html" class="float-left">&larr; Previous post</a> 
+            
+        </footer>
+
+    </article>
+
+</div>
+
+
+        <!-- Footer -->
+<footer id="footer">
+    <!-- <img src="/images/pic02.jpg" class="fit image"> -->
+        <div class="container">
+        <div class="row double">
+            <div class="6u">
+                <div class="row collapse-at-2">
+                    <div class="6u">
+                        <h3>Links</h3>
+                        <ul class="alt">
+                            <li><a href="https://github.com/RaphaelBaskerville">GitHub</a></li>
+                            <li><a href="https://twitter.com/_12_13_">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/thabaskerville/">Instagram</a></li>
+                        </ul>
+                    </div>
+<!--                     <div class="6u">
+                        <h3>Faucibus</h3>
+                        <ul class="alt">
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                            <li><a href="#">Vis faucibus sed tempor</a></li>
+                            <li><a href="#">Massa amet lobortis vel</a></li>
+                            <li><a href="#">Nascetur nunc varius</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            <div class="6u">
+    <img src="https://pbs.twimg.com/profile_images/673727734095282176/zy2TffkG.jpg" class='fit image mid'>
+                <h2>coder : 1213</h2>
+                <p>I like to blog about computer-programing, skateboarding and dog-loving!  <br>I code JavaScript, I skate street, and I pamper chihuahua.</p>
+                <ul class="icons">
+
+                    <li><a href="https://twitter.com/_12_13_" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/RaphaelBaskerville" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="https://www.instagram.com/thabaskerville/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <!-- <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <!-- <li>Design: <a href="http://templated.co">TEMPLATED</a></li> -->
+            <!-- <li>Images: <a href="http://unsplash.com">Unsplash</a></li> -->
+            <!-- <li>Jekyll Template: <a href="http://cloudcannon.com">Cloud Cannon</a></li> -->
+        </ul>
+    </div>
+</footer>
+
+
+    </body>
+
+</html>
