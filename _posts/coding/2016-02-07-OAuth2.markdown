@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to retrieve any users last tweet using the Twitter API"
-date:   2016-1-10 00:50:32 -0800
+date:   2016-2-07 00:50:32 -0800
 categories: coding
 ---
 
