@@ -32,7 +32,10 @@ var bufferedToken = new Buffer(bearerTokenCred);
 // encode the buffer object in base64
 var encodedAndBufferedToken = bufferedToken.toString('base64');
 {% endhighlight %}
+  
   You need to aquire the keys and secret for your app after you register it with twitter. 
+
+{% highlight ruby %}
 
 // set up options, you need quotes around keys with hyphens
 var options = {
