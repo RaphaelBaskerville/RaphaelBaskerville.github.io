@@ -11,9 +11,9 @@ categories: coding
 
   In order to make requests to Twitter you have to authenticate yourself.   In this example, instead of authenticating an actual user, we authenticate the application itself.
 
-   First, you need to register your app with twitter to aquire a key and secret at [apps.twitter.com][twitter-apps]. 
+   First, you need to register your app with twitter to aquire a consumer key and secret at [apps.twitter.com][twitter-apps]. 
 
-   Then we format the strings into an encoded buffer object that we can send to twitter. 
+   Then we format the both the together key and the secret into an encoded buffer object that we can send to twitter. 
 
 {% highlight ruby %}
 //////////////////////////////////////////////////////////////////
@@ -70,9 +70,9 @@ request(options, function (err, response, body) {
 
 {% endhighlight %}
   
-  Awesome!! You have a token.  Lets use it to get some data back from twitter.
-
-  In this example we grab a users last tweet.
+  Awesome!! You have a token.  Lets use it to get some data back from twitter. In this example we are just building the backend route to grab a users last tweet. To test it you need to make a GET request with a wusers handle as a param to:
+  
+    /tweets/:TWITTERHANDLE 
 
 {% highlight ruby %}
 
